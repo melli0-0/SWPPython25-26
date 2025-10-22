@@ -14,6 +14,7 @@ and the value is a rating string based on the price:
 Create a one-line comprehension that lists all models of the brand BMW
 that are younger than 2019 and have a price below 40,000.
 '''
+import string
 
 cars = [
     {"brand": "BMW", "model": "X5", "year": 2018, "mileage": 55000, "price": 32000},
@@ -23,6 +24,8 @@ cars = [
     {"brand": "BMW", "model": "M3", "year": 2020, "mileage": 30000, "price": 55000},
     {"brand": "Audi", "model": "Q7", "year": 2019, "mileage": 45000, "price": 40000},
 ]
+
+cars_list = ['BMW', 'Audi', 'Tesla', 'BMW', 'Ford', 'Audi', 'Toyota', 'Tesla', 'Mazda']
 
 def list_comprehension():
     used_cars = []
@@ -62,8 +65,21 @@ def bonus_comprehension():
 
     return bmw
 
+def list_to_set():
+    unique = []
+    unique_cars = [car for car in cars_list
+                   if car not in unique and not unique.append(car)]
+    return unique_cars
+
+def dict_ascii():
+    #ord() returns ascii value or unicode
+    ascii_dict = {char : ord(char) for char in string.ascii_lowercase}
+    return ascii_dict
+
 if __name__ == '__main__':
     print(list_comprehension())
     print(set_comprehension())
     print(dict_comprehension())
     print(bonus_comprehension())
+    print(list_to_set())
+    print(dict_ascii())
