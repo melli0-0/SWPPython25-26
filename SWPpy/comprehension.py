@@ -29,7 +29,7 @@ cars_list = ['BMW', 'Audi', 'Tesla', 'BMW', 'Ford', 'Audi', 'Toyota', 'Tesla', '
 
 def list_comprehension():
     used_cars = []
-    long_driven = [cars[i].get("model") for i in range(len(cars)) if cars[i].get("mileage") >= 50000 ]
+    long_driven = [car.get("model") for car in cars if car.get("mileage") >= 50000 ]
     for i in range(len(long_driven)):
         car_found = False
         j=0
@@ -67,6 +67,8 @@ def bonus_comprehension():
 
 def list_to_set():
     unique = []
+    # append() returns None
+    # not None = True
     unique_cars = [car for car in cars_list
                    if car not in unique and not unique.append(car)]
     return unique_cars
