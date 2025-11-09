@@ -1,3 +1,15 @@
+```table-of-contents
+title: Inhaltsverzeichnis 
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+include: 
+exclude: 
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
+
 ## Compiler- vs. Interpretersprachen
 
 Compilersprache: 
@@ -511,6 +523,13 @@ Raw String werden verwendet um einen String nur als String zu sehen, z.B. keine 
 
 f Strings können auch nested werden (geht aber so nur in bestimmten Python Versionen)
 
+
+## isinstance()
+
+Eine Funktion, die True returned, wenn ein bestimmtes Objekt einen speziellen Datentyp(en) hat.
+`isinstance(object, type)`
+Als Type können auch mehrere Typen angeben werden, dann wird True returned wenn das Objekt einen dieser Datentypen hat.
+`isinstance(var, (int, str, float, list))`
 
 [^1]
 
