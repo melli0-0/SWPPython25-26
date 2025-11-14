@@ -2,9 +2,18 @@
     poker simulation:
         - modulate 52 cards (13 symbols, 4 colors)
         - take 5 cards
-        - functions for pair, drilling, flush (same color), royal flush and straight
+        - functions combinations
         - play 100000 times - calculate percentage for different combinations
         - compare with correct percentages (internet)
+            - Pair: 42.25%
+            - Two Pairs: 4.75%
+            - Drilling: 2.11%
+            - Four Cards: 0.024%
+            - Full House: 0.144%
+            - Straight: 0.39% [10,J,K,Q,A and A,1,2,3,4 are included]
+            - Flush: 0.20%
+            - Straight Flush: 0.00139%
+            - Royal FLush: 0.00015%
 '''
 import array as array
 import random
