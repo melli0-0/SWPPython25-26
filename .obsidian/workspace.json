@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "692f3671f37a3eeb",
+        "id": "bd903bea72a05eec",
         "type": "tabs",
         "children": [
           {
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "19d8af3818ee5872",
+            "id": "35718d1e36ae2be1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Compiler-",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,8 +89,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -185,8 +184,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "19d8af3818ee5872",
+  "active": "35718d1e36ae2be1",
   "lastOpenFiles": [
+    "SWPpy/pokersimulation.py~",
+    "SWPpy/uebung.py~",
+    "SWPpy/uebung.py",
     "README.md",
     "Mitschrift.md"
   ]

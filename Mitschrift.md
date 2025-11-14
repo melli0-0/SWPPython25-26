@@ -7,7 +7,7 @@ include:
 exclude: 
 includeLinks: true # Make headings clickable
 hideWhenEmpty: false # Hide TOC if no headings are found
-debugInConsole: false # Print debug info in Obsidian console
+debugInConsole: false # Print debug info in console
 ```
 
 ## Compiler- vs. Interpretersprachen
@@ -97,7 +97,7 @@ Iteration ist eine Schleife.
 - Optimiert (unnötige Befehle entfernen)
 - Verknüpft
 
-Ein Prozessor hat verschiedene Speicherbereiche, in denen Dater verwaltet werden:
+Ein Prozessor hat verschiedene Speicherbereiche, in denen Daten verwaltet werden:
 
 - Register
 	- sehr schnell, direkt auf CPU
@@ -114,7 +114,7 @@ Ein Prozessor hat verschiedene Speicherbereiche, in denen Dater verwaltet werden
 - Stack
 	- im RAM 
 	- Variablen und Funktionsaufrufe
-	- z.B. Parameter, Rücksprungadtessen
+	- z.B. Parameter, Rücksprungadressen
 	
 - Heap
 	- dynamischer Speicher
@@ -127,8 +127,10 @@ Auf Maschinencode - Ebene bestehen Anweisungen aus Assembly - Befehlen
 ## ARGS und KWARGS
 
 Schlüsselwörter um beliebig viele Parameter an eine Funktion zu übergeben
-ARGS - unbestimmte Länge
+ARGS - (un)bestimmte Länge
+Tuple
 KWARGS - bestimmter Länge
+Dictionary
  // Keyword Arguments
 
 
@@ -161,7 +163,7 @@ Garbage Collector kommt periodisch und gibt alle nicht benötigten Variablen etc
 Der Garbage Collector teilt Speicher in zwei Hälften und kopiert alle Referenzen (wo Counter nicht 0) in die neue Hälfte.
 Garbage Collector kann ausgeschaltet werden und mit 
 del() können Referenzen manuel gelöscht werden (~ 10% mehr productivity, da GC nur periodisch freigibt)
-del(a): (command) weist garbage collector zu a freizugeben (sofern counter == 0 und GC kommt normal periodisch vorbei, nicht früher)
+del(a): (command) - löscht referenz weist garbage collector zu a freizugeben (GC kommt normal periodisch vorbei, nicht früher)
 
 ```
 import gc
@@ -241,7 +243,7 @@ break, continue, return, pass
 ```
 #### Fehlerbehandlung
 
-try, catch, finally
+try, except, else, finally
 ```
 >>> try:    
 ...     val = int('defnoInt')  
@@ -452,7 +454,7 @@ Dateiendungen sind dabei nicht wichtig (nur fürs Programm)
 
 **mutable**
 - Inhalt eines Objects kann geändert werden
-- Lists, Dictionaries, Dets, bytearrays
+- Lists, Dictionaries, Sets, bytearrays
 - in Java werden Seiteneffekte durch private, get, set verhindert
 
 **immutable**
@@ -483,10 +485,12 @@ Dateiendungen sind dabei nicht wichtig (nur fürs Programm)
 
 ## Dunder
 
-Meistens werden Variablen als Dunder Variablen und Methoden als Magic Methods bezeichnet. 
-Dunder: Double Under
+Meistens werden Variablen als Dunder Variablen und Methoden als Magic Methods bezeichnet.  Sie sind ein Teil der Grund-Standard-Funktionen.
+Dunder: Double Underscore
 `__name__` 
-Dunder für alle Methoden / Variablen verwendet, die von Python selber befüllt / ausgeführt werden
+Dunder für alle Methoden / Variablen verwendet, die von Python (Interpreter) selber befüllt / ausgeführt werden
+
+Können überschrieben werden.
 
 z.B. um von anderen Skripts main aufzurufen
 
@@ -530,6 +534,43 @@ Eine Funktion, die True returned, wenn ein bestimmtes Objekt einen speziellen Da
 `isinstance(object, type)`
 Als Type können auch mehrere Typen angeben werden, dann wird True returned wenn das Objekt einen dieser Datentypen hat.
 `isinstance(var, (int, str, float, list))`
+
+
+## eingebaute Funktionen
+
+[[https://openbook.rheinwerk-verlag.de/python/19_008.html#u19.8]]
+
+
+## Exception Handling
+
+Wenn ein Fehler gefunden wird, wie geht man mit diesem Fehler um?
+Wie kann man das Programm stabil halten? -> Richtige Fehler behandeln. 
+Fehlercode: sys.exit() -> 0 ... fehlerfrei
+
+#### Lokal behandeln
+
+Fehler wird direkt in der Methode geworfen und behandelt.
+
+#### Lokal weiterreichen
+
+Fehler wird in der Methode geworfen, aber weitergerreicht - throw
+Wenn man den Fehler in der Methode eventuell nicht abhandeln kann.
+
+#### Weiterreichen
+
+Fehler wird abgefangen, kann nicht behandelt werden und wird weitergegeben
+
+#### Behandeln
+
+Fehler wird abgefangen und behandelt.
+
+#### Main
+
+try - except:
+	sys.exit(1)
+
+
+
 
 [^1]
 

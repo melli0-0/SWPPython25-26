@@ -35,6 +35,34 @@ def check_equal_cards(hand_cards, equal):
             return True
     return False
 
+def check_two_pairs(hand_cards):
+    symbols = []
+    pairs = []
+    for card in hand_cards:
+        card = card % modulo
+        symbols.append(card)
+        if symbols.count(card) == 2 and card not in pairs:
+            pairs.append(card)
+
+    if len(pairs) == 2:
+        return True
+    return False
+
+def check_full_house(hand_cards):
+    symbols = []
+    d = None
+    for card in hand_cards:
+        card = card % modulo
+        symbols.append(card)
+        if symbols.count(card) == 3:
+            d = card
+
+    if d is not None:
+        cards_left = [c for c in symbols if c != d]
+        if len(cards_left) == 2 and len(set(cards_left)) == 1:
+            return True
+    return False
+
 def check_flush(hand_cards):
     colors = []
     for card in hand_cards:
@@ -71,6 +99,7 @@ def check_royalflush(hand_cards):
 
 def check_straight(hand_cards):
     symbols = []
+    swap = False
     for card in hand_cards:
         card = card % modulo
         if card in symbols:
@@ -81,24 +110,39 @@ def check_straight(hand_cards):
     first = symbols[0]
     for i in range(len(hand_cards)):
         if symbols[i] != first+i:
-            return False
-
+            # [0, 9, 10, 11, 12]
+            if (symbols[i] != 12) or (first != 0):
+                return False
     return True
+
+def check_str_flush(hand_cards):
+    if check_flush(hand_cards) and check_straight(hand_cards):
+        return True
+    return False
+
 
 def percentage(runtimes, cards_nr):
     values = {
         'pair': 0,
+        'two_pairs': 0,
         'drilling': 0,
+        'four_cards': 0,
+        'full_house': 0,
+        'straight': 0,
         'flush': 0,
-        'royalflush': 0,
-        'straight': 0
+        'straight_flush': 0,
+        'royalflush': 0
     }
     checks = {
-        'pair': (check_equal_cards,2),
-        'drilling': (check_equal_cards,3),
-        'flush': (check_flush, None),
         'royalflush': (check_royalflush, None),
-        'straight': (check_straight, None)
+        'straight_flush': (check_str_flush, None),
+        'flush': (check_flush, None),
+        'straight': (check_straight, None),
+        'four_cards': (check_equal_cards,4),
+        'full_house': (check_full_house, None),
+        'drilling': (check_equal_cards, 3),
+        'two_pairs': (check_two_pairs, None),
+        'pair': (check_equal_cards, 2)
     }
 
     for i in range(runtimes):
@@ -107,9 +151,11 @@ def percentage(runtimes, cards_nr):
             if arg is not None:
                 if func(my_cards, arg):
                     values[val] += 1
+                    break
             else:
                 if func(my_cards):
                     values[val] += 1
+                    break
 
     values = {key: v / runtimes for key,v in values.items() }
 
