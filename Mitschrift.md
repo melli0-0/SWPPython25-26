@@ -174,11 +174,18 @@ gc.get_threshold()
 MAN KANN NICHTS LÖSCHEN NUR FREIGEBEN!
 
 
-## Bedingte Ausdrücke
+## Bedingte Ausdrücke / Ternary Operator
 
 var = (20 if x == 1 else 30)
 A if BEDINGUNG else B
 
+```
+n=7
+res = ("Odd", "Even")[n%2==0]
+print(res)
+```
+Achtung Syntax bei Tuples:
+(False, True) Bedingung
 
 ## Match Case
 
@@ -544,7 +551,12 @@ Als Type können auch mehrere Typen angeben werden, dann wird True returned wenn
 ## Exception Handling
 
 Wenn ein Fehler gefunden wird, wie geht man mit diesem Fehler um?
-Wie kann man das Programm stabil halten? -> Richtige Fehler behandeln. 
+
+**Zwei Strategien:**
+- LBYL (Look Before You Leap) - if else
+- EAFP (Easier to Ask Forgiveness than Permission) - try catch - *effektiver*
+
+Wie kann man das Programm stabil halten? --> Richtige Fehler behandeln.  Bei Logikfehler.
 Fehlercode: sys.exit() -> 0 ... fehlerfrei
 
 #### Lokal behandeln
@@ -558,7 +570,8 @@ Wenn man den Fehler in der Methode eventuell nicht abhandeln kann.
 
 #### Weiterreichen
 
-Fehler wird abgefangen, kann nicht behandelt werden und wird weitergegeben
+Fehler wird abgefangen, kann nicht behandelt werden und wird weitergegeben 
+z.B. Rechtevergebung
 
 #### Behandeln
 
@@ -569,6 +582,23 @@ Fehler wird abgefangen und behandelt.
 try - except:
 	sys.exit(1)
 
+sys.exit(x) ... x kann bei einem Fehler jede Nummer außer 0 sein
+
+## Debugger
+
+haltet Programm an (Breakpoint) und speichert Variablen (GC soll darf die Variablen nicht löschen)
+
+In CommandLine (Pdb):
+`breakpoint()`
+
+## Tests & Unittests
+
+sucht nach `text_*.py` oder `*_test.py` Dateien und erkennt enthaltende Testklassen und -methoden 
+Im Vergleich zu eigenen Tests, werden Unittests **automatisch** aufgerufen (sofern sie der Name Convention und Vererbung entsprechen)
+
+- Tests dienen als Dokumentation
+- atomarere Programmierung
+- Fehlerisolierung beim Debuggen
 
 
 

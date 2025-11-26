@@ -18,6 +18,8 @@
 import array as array
 import random
 
+import poker_test
+
 # typecode 'i' - int values
 cards_number = 52
 modulo = 13
@@ -97,7 +99,7 @@ def check_royalflush(hand_cards):
     symbols = []
     for card in hand_cards:
         card = card % modulo
-        if card < 9: return False
+        if card < 9 and card != 0: return False
         symbols.append(card)
 
     for i in symbols:
@@ -108,7 +110,6 @@ def check_royalflush(hand_cards):
 
 def check_straight(hand_cards):
     symbols = []
-    swap = False
     for card in hand_cards:
         card = card % modulo
         if card in symbols:
@@ -120,15 +121,12 @@ def check_straight(hand_cards):
     for i in range(len(hand_cards)):
         if symbols[i] != first+i:
             # [0, 9, 10, 11, 12]
-            if (symbols[i] != 12) or (first != 0):
+            if symbols != [0,9,10,11,12]:
                 return False
     return True
 
 def check_str_flush(hand_cards):
-    if check_flush(hand_cards) and check_straight(hand_cards):
-        return True
-    return False
-
+    return (False, True)[check_flush(hand_cards) and check_straight(hand_cards)]
 
 def percentage(runtimes, cards_nr):
     values = {
@@ -157,14 +155,11 @@ def percentage(runtimes, cards_nr):
     for i in range(runtimes):
         my_cards = take_cards(cards_nr)
         for val, (func, arg) in checks.items():
-            if arg is not None:
-                if func(my_cards, arg):
-                    values[val] += 1
-                    break
-            else:
-                if func(my_cards):
-                    values[val] += 1
-                    break
+            res = func(my_cards, arg) if arg is not None else func(my_cards)
+
+            if res:
+                values[val] += 1
+                break
 
     values = {key: v / runtimes for key,v in values.items() }
 
@@ -180,6 +175,7 @@ if __name__ == '__main__':
     print('Royal Flush: ', check_royalflush(my_cards))
     print('Straight: ', check_straight(my_cards))
     '''
+
     print('Runtimes: ')
     runtimes = int (input())
     print('Cards: ')
@@ -187,5 +183,4 @@ if __name__ == '__main__':
     values = percentage(runtimes, cards_nr)
     for val in values:
         print(val,': ',values[val])
-
 

@@ -78,6 +78,7 @@ def print_result(liste):
     else:
         print(liste)
 
+
 if __name__ == '__main__':
     #steuerzahler = fill_array(5000, 100000, 10)
     #print(steuerzahler)
