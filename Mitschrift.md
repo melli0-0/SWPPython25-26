@@ -187,6 +187,9 @@ print(res)
 Achtung Syntax bei Tuples:
 (False, True) Bedingung
 
+Es gibt auch Tuple, Dict ternary operators, ...
+
+
 ## Match Case
 
 Match Case ist wie Switch Case in Python
@@ -545,7 +548,7 @@ Als Type können auch mehrere Typen angeben werden, dann wird True returned wenn
 
 ## eingebaute Funktionen
 
-[[https://openbook.rheinwerk-verlag.de/python/19_008.html#u19.8]]
+[python functions](https://openbook.rheinwerk-verlag.de/python/19_008.html#u19.8)
 
 
 ## Exception Handling
@@ -593,16 +596,91 @@ In CommandLine (Pdb):
 
 ## Tests & Unittests
 
-sucht nach `text_*.py` oder `*_test.py` Dateien und erkennt enthaltende Testklassen und -methoden 
+Test Driven Development (TDD) - von Tests zu Methode
+Tests helfen, Fehler zu erkennen (Iterativ)
+Bei Unittests sucht Test-Framework nach `text_*.py` oder `*_test.py` Dateien und erkennt enthaltende Testklassen und -methoden 
 Im Vergleich zu eigenen Tests, werden Unittests **automatisch** aufgerufen (sofern sie der Name Convention und Vererbung entsprechen)
 
 - Tests dienen als Dokumentation
 - atomarere Programmierung
 - Fehlerisolierung beim Debuggen
+`python -m unittest poker_test.py`
+
+
+## Functions or Methods
+
+Funktionen sind außerhalb von Klassen, innerhalb von Klassen werden sie Methoden genannt
+(in Java gibt es wg. OOP keine Funktionen)
+
+
+## Lambda 
+
+Anonyme Funktionen: haben per Def. keinen Namen 
+Python: *Lambda-Ausdruck*
+- kleine Funktionen *an einer Stelle (nicht einmal)* definieren 
+- bessere Lesbarkeit
+- weniger Schreibaufwand
+- Logik - Kapselung
+- nur ein Retourwert (auch bei mehreren parameter)
+
+```
+function = lambda x:x+1  
+print(function)  
+<function <lambda> at 0x7fe75c250040>
+```
+- Function muss noch evaluiert werden
+- ähnlich Prepared Statement (siehe [SQL?](https://www.w3schools.com/php/php_mysql_prepared_statements.asp))
+
+
+## Map
+
+- anstelle einer For-Loop; ähnlich wie Comprehensions
+- zwei Parameter (function, iterable(s))
+	- functions: eigene, schon implementierte, lambdas, ...
+	- iterable: list, ... 
+
+`map(function, iterable, [iterable 2, iterable 3, ...])`
+
+- map - Datatype: Zeigt nur auf erste Stelle (noch nicht berechnet) -> (für große Datenstrukturen sinnvoll)
+
+```
+map = map(lambda x: x*2+3,nr)  
+print(map)  
+<map object at 0x7fe75c25ca30>
+```
+
+- map zu list casten -> dadurch werden die berechneten Ergebnisse in einem list-Object gespeichert
+
+```
+nr = [10,5,4,2,12,22]  
+map_nr = list(map(lambda x: x*2+3, nr))  
+print(map_nr)  
+[23, 13, 11, 7, 27, 47]
+```
+
+- in diesem Fall function: `lambda x: x*2+3` und Iterable: `nr`
+- z.B. integrierte pow() function braucht 2 Parameter (base & power)
+
+```
+base = [1,2,3,4,5]  
+power = [1,2,3,4,5]  
+nr = list(map(pow, base, power))
+print(nr)  
+[1, 4, 27, 256, 3125]
+```
+
+
+
+## Backus-Naur-Form
+
+Syntax Beschreibung gängiger höherer Programmiersprachen
+[Backus-Naur-Form](https://de.wikipedia.org/wiki/Backus-Naur-Form)
+
 
 
 
 [^1]
 
+-------------------- 
 [^1]: Author: Melli Lindebner
 

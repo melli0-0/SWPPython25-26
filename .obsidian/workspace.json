@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bd903bea72a05eec",
+        "id": "f1a03bf76c4a0e34",
         "type": "tabs",
         "children": [
           {
-            "id": "b8f488c701e5739b",
+            "id": "9163b5ae3ad95004",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -169,12 +170,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "d82a7fd55b21e94f",
+  "active": "9163b5ae3ad95004",
   "lastOpenFiles": [
-    "SWPpy/pokersimulation.py~",
-    "README.md",
     "Mitschrift.md",
+    "SWPpy/pokersimulation.py~",
     "SWPpy/poker_test.py~",
+    "README.md",
     "SWPpy/__pycache__/poker_test.cpython-313.pyc",
     "SWPpy/__pycache__/pokersimulation.cpython-313.pyc",
     "SWPpy/__pycache__",

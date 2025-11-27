@@ -37,7 +37,7 @@ def take_cards(taking):
         hand_cards[take] = card
     return hand_cards
 
-def check_equal_cards(hand_cards, equal):
+def check_equal_cards(hand_cards, equal: int) -> bool:
     symbols = []
     for card in hand_cards:
         card = card % modulo
@@ -69,6 +69,7 @@ def check_full_house(hand_cards):
             d = card
 
     if d is not None:
+        # ternary operator
         cards_left = [c for c in symbols if c != d]
         if len(cards_left) == 2 and len(set(cards_left)) == 1:
             return True
@@ -126,6 +127,7 @@ def check_straight(hand_cards):
     return True
 
 def check_str_flush(hand_cards):
+    # ternary operator tuple
     return (False, True)[check_flush(hand_cards) and check_straight(hand_cards)]
 
 def percentage(runtimes, cards_nr):

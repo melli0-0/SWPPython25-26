@@ -41,3 +41,5 @@ class PokerTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    # CMD: python -m unittest poker_test.py
+
