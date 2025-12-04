@@ -172,16 +172,18 @@
   },
   "active": "9163b5ae3ad95004",
   "lastOpenFiles": [
+    "SWPpy/testproject/requirements.txt",
+    "SWPpy/testproject/venv/bin/activate.csh",
+    "SWPpy/testproject/venv/bin/activate.fish",
+    "SWPpy/testproject/venv/bin/activate",
+    "SWPpy/testproject/venv/bin/Activate.ps1",
+    "SWPpy/testproject/venv/lib/python3.13/site-packages/pip-24.3.1.dist-info/RECORDd3o0vgbx.tmp",
+    "SWPpy/testproject/venv/lib/python3.13/site-packages/pip-24.3.1.dist-info/REQUESTED",
+    "SWPpy/testproject/venv/lib/python3.13/site-packages/pip-24.3.1.dist-info/INSTALLER",
+    "SWPpy/testproject/venv/bin/pip3.13",
+    "SWPpy/testproject/venv/bin/pip3",
+    "SWPpy/testproject/venv/bin/pip",
     "Mitschrift.md",
-    "SWPpy/pokersimulation.py~",
-    "SWPpy/poker_test.py~",
-    "README.md",
-    "SWPpy/__pycache__/poker_test.cpython-313.pyc",
-    "SWPpy/__pycache__/pokersimulation.cpython-313.pyc",
-    "SWPpy/__pycache__",
-    "SWPpy/poker_test.py",
-    "SWPpy/unit_test.py",
-    "SWPpy/uebung.py~",
-    "SWPpy/uebung.py"
+    "README.md"
   ]
 }

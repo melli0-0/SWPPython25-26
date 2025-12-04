@@ -622,22 +622,32 @@ Python: *Lambda-Ausdruck*
 - weniger Schreibaufwand
 - Logik - Kapselung
 - nur ein Retourwert (auch bei mehreren parameter)
+- nicht unbedingt schneller
 
 ```
 function = lambda x:x+1  
 print(function)  
 <function <lambda> at 0x7fe75c250040>
 ```
-- Function muss noch evaluiert werden
+- Function muss noch *evaluiert* werden
 - ähnlich Prepared Statement (siehe [SQL?](https://www.w3schools.com/php/php_mysql_prepared_statements.asp))
 
 
 ## Map
 
 - anstelle einer For-Loop; ähnlich wie Comprehensions
+- map modifiziert
+- List vs Iterable
+	- (Array)List wird komplet in den Speicher geladen
+	- Iterable ladet nur Anfangsspeicherstelle (unendlich lange bearbeitung theoretisch möglich)
+	- Iterable ist nicht speicherabhängig
+	- Iterable:
+		- `init()`
+		- `__next__()` Logik
 - zwei Parameter (function, iterable(s))
-	- functions: eigene, schon implementierte, lambdas, ...
+	- functions: eigene, schon implementierte / build in, lambdas, ...
 	- iterable: list, ... 
+		- Anzahl <=> Anzahl Parameter der Funktion
 
 `map(function, iterable, [iterable 2, iterable 3, ...])`
 
@@ -670,11 +680,73 @@ print(nr)
 ```
 
 
-
 ## Backus-Naur-Form
 
 Syntax Beschreibung gängiger höherer Programmiersprachen
 [Backus-Naur-Form](https://de.wikipedia.org/wiki/Backus-Naur-Form)
+
+
+## Filter
+
+Filtern Iterable und Funktion mit boolean return values. Filter erzeugt ein filter-element mit allen Werten, wo die Funktion True ist. 
+
+```
+values = [3,7,9,11,17,24,25,38,40,42]
+def function(x):
+	return x > 10
+nr = filter(function, values)
+type(nr)
+<class 'filter'>
+
+nr_list = list(nr)  
+print(nr_list)  
+[11, 17, 24, 25, 38, 40, 42]
+```
+
+
+## Zip - Function
+
+verbindet einzelne Iterable zusammen
+Zip ist gleich lang, wie die kürzeste Liste (falls andere länger sind, endet zip trotzdem)
+
+```
+list1 = [1,2,3]
+list2 = ['a', 'b', 'c']
+list3 = ['x', 'y', 'z']
+
+# datatype zip
+zipped_list = zip(list1, list2, list3)
+
+print(list(zipped_list))
+
+# list of tuples
+[(1, 'a', 'x'), (2, 'b', 'y'), (3, 'c', 'z')]
+```
+
+## Virtual Environments
+
+```
+python3 -m venv venv
+cd ../
+source venv/bin/activate
+which python
+deactivate
+```
+
+Requirements angeben
+```
+rm -rf venv
+vim requirements.txt
+
+--> txt:
+pandas
+matplotlib
+requests
+
+pip install -r requirements.txt
+```
+
+#### UV
 
 
 
