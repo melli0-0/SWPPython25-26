@@ -644,9 +644,10 @@ print(function)
 	- Iterable:
 		- `init()`
 		- `__next__()` Logik
+		- nur einmal durchgehen (Anfangsreferenz wird ans Ende geschoben und die Werte müssen extra gespeichert werden)
 - zwei Parameter (function, iterable(s))
 	- functions: eigene, schon implementierte / build in, lambdas, ...
-	- iterable: list, ... 
+	- iterable: list, zip, filter, ...
 		- Anzahl <=> Anzahl Parameter der Funktion
 
 `map(function, iterable, [iterable 2, iterable 3, ...])`
@@ -747,6 +748,30 @@ pip install -r requirements.txt
 ```
 
 #### UV
+
+
+## Object Oriented Programming
+
+```
+class Class_Name:
+	def __init__(self):
+		# ctor
+```
+
+- in Python gibt es keine Modifikatoren (private, ...), um das anzuzeigen kann man `_name` als private definieren, jedoch ist das nur eine Nameconvention und der Debugger macht nichts damit
+- Instanz: Class()
+- Es gibt keine Getter / Setter: `obj.attribute`
+- `__str__()` wird bei `print()` aufgerufen
+- `__repr__()` returns string mit Quotes preserved
+
+#### Vererbung
+
+- Vererbung: `class Child(Parent)` -  `super()`
+- `super()` ruft nicht (wie in Java) den Ctor auf, sondern referenziert nur auf die Parent Class -> `super().__init__()
+- Einfachvererbung: in einem Schritt nur eine Vererbung (mit Interfaces auch Mehrfachvererbung möglich) 
+	- übersichtlicher
+- Mehrfachvererbung: Child(Parent1, Parent2)
+	- für z.B. unlogische Sachen (Sideloading)
 
 
 

@@ -6,13 +6,13 @@ def filter_function(values):
     return filtered
 
 def map_dictionary(tuple_elements):
-
-    mapped_elems = map(lambda m: {
+    mapped_elems = map(
+        lambda m: {
             "name": m[0],
             "age": m[1],
             "score": m[2]
-        }, tuple_elements
-    )
+        }, tuple_elements)
+
     return mapped_elems
 
 if __name__ == '__main__':
@@ -20,5 +20,6 @@ if __name__ == '__main__':
     ages = [23, 17, 34, 15, 29]
     scores = [88, 92, 75, 64, 91]
     tuples = zip_function(names, ages, scores)
+
     filter_tuples = filter_function(tuples)
     print(list(map_dictionary(filter_tuples)))
