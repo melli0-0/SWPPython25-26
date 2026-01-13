@@ -604,6 +604,7 @@ Im Vergleich zu eigenen Tests, werden Unittests **automatisch** aufgerufen (sofe
 - Tests dienen als Dokumentation
 - atomarere Programmierung
 - Fehlerisolierung beim Debuggen
+
 `python -m unittest poker_test.py`
 
 
