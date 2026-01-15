@@ -385,6 +385,8 @@ z.B. chr(65) ... Ascii Number --> A
 ```
 # [ <Ausdruck> for <Element> in <Iterable> if <Bedingung> ]
 [print(i) for i in range(4) if i%2==0]
+
+# [ <Ausdruck> if <Bed> else <Bed> for <Element> in <Iterable>]
 ```
 
 #### Set Comprehensions
@@ -589,7 +591,7 @@ sys.exit(x) ... x kann bei einem Fehler jede Nummer außer 0 sein
 
 ## Debugger
 
-haltet Programm an (Breakpoint) und speichert Variablen (GC soll darf die Variablen nicht löschen)
+haltet Programm an (Breakpoint) und speichert Variablen (GC soll / darf die Variablen nicht löschen)
 
 In CommandLine (Pdb):
 `breakpoint()`
@@ -618,11 +620,11 @@ Funktionen sind außerhalb von Klassen, innerhalb von Klassen werden sie Methode
 
 Anonyme Funktionen: haben per Def. keinen Namen 
 Python: *Lambda-Ausdruck*
-- kleine Funktionen *an einer Stelle (nicht einmal)* definieren 
+- kleine Funktionen *an einer Stelle (nicht "einmal")* definieren 
 - bessere Lesbarkeit
 - weniger Schreibaufwand
 - Logik - Kapselung
-- nur ein Retourwert (auch bei mehreren parameter)
+- nur **ein** Retourwert (auch bei mehreren Parameter)
 - nicht unbedingt schneller
 
 ```
@@ -639,7 +641,7 @@ print(function)
 - anstelle einer For-Loop; ähnlich wie Comprehensions
 - map modifiziert
 - List vs Iterable
-	- (Array)List wird komplet in den Speicher geladen
+	- (Array)List wird komplett in den Speicher geladen
 	- Iterable ladet nur Anfangsspeicherstelle (unendlich lange bearbeitung theoretisch möglich)
 	- Iterable ist nicht speicherabhängig
 	- Iterable:
@@ -768,7 +770,8 @@ class Class_Name:
 #### Vererbung
 
 - Vererbung: `class Child(Parent)` -  `super()`
-- `super()` ruft nicht (wie in Java) den Ctor auf, sondern referenziert nur auf die Parent Class -> `super().__init__()
+- `super()` ruft nicht (wie in Java) den Ctor auf, sondern referenziert nur auf die Parent Class -> `super().__init__() (hierbei wird der ctor aufgerufen)
+- `super().specific_func()` ... damit kann eine spezifische Funktion der Parent Class aufgerufen  
 - Einfachvererbung: in einem Schritt nur eine Vererbung (mit Interfaces auch Mehrfachvererbung möglich) 
 	- übersichtlicher
 - Mehrfachvererbung: Child(Parent1, Parent2)

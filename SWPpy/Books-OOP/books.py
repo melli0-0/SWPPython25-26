@@ -22,6 +22,7 @@ class EBooks(Books):
 
     def loading(self):
         print(f"load {self.title}")
+        
 
 class Hardcover(Books):
     def __init__(self, genre, title, pages):
