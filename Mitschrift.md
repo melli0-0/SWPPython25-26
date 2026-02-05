@@ -44,7 +44,6 @@ Iteration ist eine Schleife.
 	- schneller (braucht keinen extra Speicherplatz für zwischengespeicherte Variablen)
 	- z.B. while - Schleife
 
-
 ## Programmierparadigmen
 
 - Imperative Programmierung
@@ -128,10 +127,11 @@ Auf Maschinencode - Ebene bestehen Anweisungen aus Assembly - Befehlen
 
 Schlüsselwörter um beliebig viele Parameter an eine Funktion zu übergeben
 ARGS - (un)bestimmte Länge
-Tuple
+- List
 KWARGS - bestimmter Länge
-Dictionary
- // Keyword Arguments
+- Dictionary
+ 
+`#` Keyword Arguments
 
 
 ## Python Interpreter
@@ -770,12 +770,138 @@ class Class_Name:
 #### Vererbung
 
 - Vererbung: `class Child(Parent)` -  `super()`
-- `super()` ruft nicht (wie in Java) den Ctor auf, sondern referenziert nur auf die Parent Class -> `super().__init__() (hierbei wird der ctor aufgerufen)
+
+- `super()` ruft nicht (wie in Java) den Ctor auf, sondern **referenziert** nur auf die Parent Class -> `super().__init__() (hierbei wird der ctor aufgerufen)
+
+- `super()` als **Referenz**
+
 - `super().specific_func()` ... damit kann eine spezifische Funktion der Parent Class aufgerufen  
+
 - Einfachvererbung: in einem Schritt nur eine Vererbung (mit Interfaces auch Mehrfachvererbung möglich) 
 	- übersichtlicher
+	
 - Mehrfachvererbung: Child(Parent1, Parent2)
 	- für z.B. unlogische Sachen (Sideloading)
+	- meist unübersichtlicher als Einfachvererbung
+	- in Java gibt es nur Einfachvererbung (außer Interfaces)
+	
+- Overwritting vs. Overloading
+	- Überschreiben: Method-Body aus programmieren
+	- Überladen: mehrere Methoden mit dem gleichen Namen mit entweder unterschiedlich vielen Parametern oder Datentypen
+	- in Python wird letzte Methode genommen (es gibt **kein** Overloading)
+	
+- Monkey-Patching ("Manipulieren") - Sideeffect optimierung
+```
+class Square(Rectangle):
+	def __init__(self, length):
+		super(Square, self).__init__(length, length)
+```
+ 
+ `super(Square, instance)` besagt, dass `super()` ab dieser Klasse anfängt und ab dem Parameter (sofern nicht `self`) monkey gepatched wird
+ 
+ In Java: `super().super().super()` für Vererbung vor 3 Klassen
+ In Python: `super(Class_C, instance) um Klasse B aufzurufen (die untere soll angegeben werden)
+ 
+
+#### @classmethod
+```
+@classmethod
+def from_sequence(cls, sequence):
+	return cls(*sequence)
+```
+
+`cls` (*placeholder*) referenziert auf die Klasse, `self` referenziert auf die Instanz
+
+#### MRO (Bei Mehrfachvererbung)
+
+**Method Resolution Order** 
+
+Wenn man auf `ClassC(ClassA, ClassB) super()` aufruft, wird `super` auf die erste Klasse `ClassA` aufgerufen. 
+Mit `__mro__` kann die Vererbung inspeziert werden. Python verwendet MRO (C3 linearization algorithm) um sicherzustellen:
+- Klasse anzeigen vor, ParentClass
+- order (left -> right)
+- keine Klasse wird zweimal abgesucht
+- `__mro__` Attribute ist ein Tuple ```
+  class B():
+	  pass
+	
+  type(B.__mro__)
+  
+  <class 'tuple'>```
+- 
+
+
+## Iterator
+
+```
+class Iterable:
+	def __init__(self, sequence):
+		self.sequence = sequence
+	
+	def __iter__(self):
+		return SequenceIterator(self.sequence)
+```
+
+
+## Name mandling
+
+
+- `__method()` ist als private angesehen (überschreibens schutz)
+	- `__method' in einer Klasse `ClassA` wird zu `_ ClassA__method`
+- `class_` wenn man etwas nicht überschreiben möchte 
+
+Dunder sind im Python Interpretor vorbehalten
+- `for(_ in safed)` für alle 
+
+## Import
+
+- **namespace**: **Behälter für Referenzen** (die man sieht oder ansprechen kann) || was sieht man in einem bestimmten Container
+- Module: `import mod -> neuer Namespace und zwar der des Modules
+- `sys.path` Libraries anzeigen (`import sys`)
+- `sys.path.append("path")` ist nicht gut!
+- `from module import name(s) `oder `import *`  -- achtung sideeffects! -> `... as <ALIAS>`
+-  1. System-Imports | 2. Custom-Imports
+- `dir()` Funktion returned die sichtbaren Referenzen im (aktuellen) Namespace 
+- namespace ist eine Liste / Dictionary  ```
+  dir()  
+	['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'sys']```
+
+- Packages: `import pkg.mod1`
+- `import pkg` - es werden nicht alle Module automatisch geladen
+- früher `__init__.py` im Package `from pkg import *`, aber dafür muss `__all__` konfiguriert werden, damit etwas passiert - SEITENEFFEKTE!
+- in `__init__.py` kann man ziemlich alles rein schreiben - quasi ctor vom Package
+- Python sucht Package: 
+	1. im Arbeitsverzeichnis (aktuelles Verzeichnis)
+	2. im Python Path 
+	3. angeblich zusätzlichen Path bei Windows angeben
+- Python-System-Path wird als Var auf Systemebene festgelegt
+- Sub-Package: sind etwas unelegant
+
+Module <-> File
+Package <-> Ordner
+
+- Unterschied zw. `import mod` und `from mod import func` ist prinzipiell genau das gleiche, nur dass bei `import mod` der Namespace geladen wird und bei dem andere wird es in den aktuellen Namespace geladen
+
+#### Namespace
+
+1. built-in: Referenzen, die Interpretor selber anlegt
+2. global: Referenzen, globale Variablen
+3. local: innerhalb von Funktionen
+4. enclosing or nonlocal: Funktion innerhalb einer Funktion
+5. "global" / import: import namespace
+
+Suche erfolgt: 
+1. Local
+2. Enclosing / nonlocal
+3. global
+4. built-in
+
+(built-ins kann man deleten, sollte man aber nicht `del __builtins__.list`)
+
+- `globals()` returned dictionary mit allen globalen Referenzen --> nicht so super
+- `locals()` as well
+- mehr dazu auf Real Python Website
+
 
 
 
