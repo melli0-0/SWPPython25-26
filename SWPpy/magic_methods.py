@@ -5,32 +5,32 @@ class Cars:
         self.ps = ps
         self.cost = cost
 
-    def __add__(self, a, b):
+    def __add__(a, b):
         if a.isInstance() and b.isInstance():
             return a.ps + b.ps
         return a+b
 
-    def __sub__(self, a, b):
+    def __sub__(a, b):
         if a.isInstance() and b.isInstance():
             return a.ps - b.ps
         return a-b
 
-    def __mul__(self, a, b):
+    def __mul__(a, b):
         if a.isInstance() and b.isInstance():
             return a.ps * b.cost
         return a * b
 
-    def __eq__(self, a, b):
+    def __eq__(a, b):
         if a.isInstance() and b.isInstance():
             return a.ps == b.ps
         return a == b
 
-    def __lt__(self, a,b):
-        if a.isInstance() and b.isInstance():
+    def __lt__(a,b):
+        if a.isInstance(Cars) and b.isInstance(Cars):
             return a.cost < b.cost
         return a < b
 
-    def __gt__(self, a,b):
+    def __gt__(a,b):
         if a.isInstance() and b.isInstance():
             return a.cost > b.cost
         return a > b

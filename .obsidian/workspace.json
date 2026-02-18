@@ -198,6 +198,8 @@
   },
   "active": "27cf86ea57c0c41b",
   "lastOpenFiles": [
+    "SWPpy/arguments_innerfuncs.py~",
+    "SWPpy/arguments_innerfuncs.py",
     "SWPpy/magic_methods.py~",
     "SWPpy/magic_methods.py",
     "Mitschrift.md",
@@ -208,8 +210,6 @@
     "SWPpy/testproject/venv/bin/activate.csh",
     "SWPpy/testproject/venv/bin/activate.fish",
     "SWPpy/testproject/venv/bin/activate",
-    "SWPpy/testproject/venv/bin/Activate.ps1",
-    "SWPpy/testproject/venv/lib/python3.13/site-packages/pip-24.3.1.dist-info/RECORDd3o0vgbx.tmp",
     "README.md"
   ]
 }

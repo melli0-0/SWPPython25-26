@@ -127,12 +127,41 @@ Auf Maschinencode - Ebene bestehen Anweisungen aus Assembly - Befehlen
 
 Schlüsselwörter um beliebig viele Parameter an eine Funktion zu übergeben
 ARGS - (un)bestimmte Länge
-- List
+- Tuple
+- `*args` 
+- ```
+  def my_func(a,b,c, *args): return print(a,b,c, args)
+  
+  param = [1,2,3]
+  my_func(*param)
+  # my_func(a=1, b=2, c=3)
+  ```
 KWARGS - bestimmter Länge
 - Dictionary
+- `**kwargs`
+- Reihenfolge nicht wichtig
+- ```
+  def my_func(a,b,c, **kwargs)
+	  return print a,b,c
+  ```
  
 `#` Keyword Arguments
 
+ ```
+ def my_func(par1, par2, *args, **kwargs):
+	 print(par1)
+	 print(par2)
+	 print(args)
+	 
+my_func('A', *(100,200,300))
+>>A
+>>100
+>>(200,300) # Rest von *args	 
+ 
+myFunction('A',**{'parameter_1':1000,'parameter_2':1000})
+
+TypeError: myFunction() got multiple values for argument ‚parameter_1‘
+ ```
 
 ## Python Interpreter
 
@@ -903,7 +932,9 @@ Suche erfolgt:
 - mehr dazu auf Real Python Website
 
 
-
+- Kappselung oder Helper Function 
+- ProxyPattern - real funktion "verstecken"
+- Prepered Statements ?
 
 
 [^1]
