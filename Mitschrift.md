@@ -937,6 +937,68 @@ Suche erfolgt:
 - Prepered Statements ?
 
 
+## Decorators
+
+1. Adressen als Parameter
+2. In Functions inner functions aufrufen
+3. Adressen retournieren
+
+--> magical beast xD
+
+- Sourcecode erweitern ohne ihn direkt zu erweitern 
+
+```
+def decorator(func):  
+     # pointer to func  
+     def wrapper():  
+         # print in stack (kind of)  
+         print("smth before function")  
+         func()  
+         print("smth after function")  
+     # returns adress of inner wrapper code       
+     return wrapper
+     
+>>> decorator  
+<function decorator at 0x7f5dc72ac0e0>
+```
+
+Um eine Function als Decorator zu definieren:
+```
+def decorator(func):
+	# irgendwas
+
+def another_func():
+	# irgendwas
+
+>>> another_func = decorator(another_func)
+```
+Oder mit Annotation
+```
+@decorator
+def another_func():
+	# irgendwas
+```
+
+Mit Decorators können auch functionen mehrmals aufgerufen werden (Achtung bei Parameter geht das nicht - außer man gibt parameter an, wie z.B. `*args` oder `**kwargs`) 
+
+`def wrapper(*args, **kwargs)`
+
+Annotation `@functools` vom Modul - Magic Var wird nicht "mitkopiert" (`__name__`) mit der Annotation wird die innere Methode dekoriert und die Magic Variable ausgelesen und weitergegeben, damit sie weiterhin genutzt werden kann. 
+
+```
+def dec(func):
+	@functools.wraps(func)
+	def wrapper(*args, **kwargs):
+	# do smth
+	val = func(*args, **kwargs)
+	# do smth
+	return val
+return wrapper
+```
+
+Decorator `@debug`
+
+
 [^1]
 
 -------------------- 
