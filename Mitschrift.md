@@ -125,6 +125,14 @@ Auf Maschinencode - Ebene bestehen Anweisungen aus Assembly - Befehlen
 
 ## ARGS und KWARGS
 
+Position: `def f(a, b, c=2, *args, **kwargs)`
+
+```
+def f(a,b, /,*,c):
+	pass
+```
+
+
 Schlüsselwörter um beliebig viele Parameter an eine Funktion zu übergeben
 ARGS - (un)bestimmte Länge
 - Tuple
@@ -144,7 +152,18 @@ KWARGS - bestimmter Länge
   def my_func(a,b,c, **kwargs)
 	  return print a,b,c
   ```
- 
+
+`*` entpackt genau eine Ebene
+```
+a = ((1,2),(3,4))
+
+print(a)  
+((1, 2), (3, 4))  
+
+print(*a)  
+(1, 2) (3, 4)
+```
+
 `#` Keyword Arguments
 
  ```
@@ -158,7 +177,7 @@ my_func('A', *(100,200,300))
 >>100
 >>(200,300) # Rest von *args	 
  
-myFunction('A',**{'parameter_1':1000,'parameter_2':1000})
+myFunction('A',**{'par1':1000,'par2':1000})
 
 TypeError: myFunction() got multiple values for argument ‚parameter_1‘
  ```
@@ -876,7 +895,7 @@ class Iterable:
 
 
 - `__method()` ist als private angesehen (überschreibens schutz)
-	- `__method' in einer Klasse `ClassA` wird zu `_ ClassA__method`
+	- `__method in einer Klasse `ClassA` wird zu `_ ClassA__method`
 - `class_` wenn man etwas nicht überschreiben möchte 
 
 Dunder sind im Python Interpretor vorbehalten
@@ -936,6 +955,22 @@ Suche erfolgt:
 - ProxyPattern - real funktion "verstecken"
 - Prepered Statements ?
 
+#### Inner Functions
+
+- Closures
+- Funktionen vordefinieren
+
+```
+def gen(exponent):
+	def power(base):
+		return base**exponent
+	return power
+
+square = gen(2)
+square(4) 
+--> 16
+```
+
 
 ## Decorators
 
@@ -984,6 +1019,7 @@ Mit Decorators können auch functionen mehrmals aufgerufen werden (Achtung bei P
 `def wrapper(*args, **kwargs)`
 
 Annotation `@functools` vom Modul - Magic Var wird nicht "mitkopiert" (`__name__`) mit der Annotation wird die innere Methode dekoriert und die Magic Variable ausgelesen und weitergegeben, damit sie weiterhin genutzt werden kann. 
+- statt, dass die Method `wrapper*` heißt -> old name
 
 ```
 def dec(func):
@@ -998,9 +1034,18 @@ return wrapper
 
 Decorator `@debug`
 
+Bei Klassen:
+
+`def wrapper(self, *args, **kwargs)`
+
+
+## Linked Lists / Verkettete Listen
+
+Node mit value und Referenz (None - Liste leer)
+
+
 
 [^1]
 
 -------------------- 
 [^1]: Author: Melli Lindebner
-

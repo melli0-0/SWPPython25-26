@@ -20,6 +20,9 @@ import random
 
 import poker_test
 
+# import decorator function
+from decorators_swp import measure_runtime
+
 # typecode 'i' - int values
 cards_number = 52
 modulo = 13
@@ -37,6 +40,8 @@ def take_cards(taking):
         hand_cards[take] = card
     return hand_cards
 
+# use runtime decorator here
+# @measure_runtime
 def check_equal_cards(hand_cards, equal: int) -> bool:
     symbols = []
     for card in hand_cards:
@@ -130,6 +135,7 @@ def check_str_flush(hand_cards):
     # ternary operator tuple
     return (False, True)[check_flush(hand_cards) and check_straight(hand_cards)]
 
+@measure_runtime
 def percentage(runtimes, cards_nr):
     values = {
         'pair': 0,
